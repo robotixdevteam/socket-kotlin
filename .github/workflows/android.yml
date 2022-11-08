@@ -1,4 +1,4 @@
-name: Android Build Release Apk
+name: Android Build Release APK
 
 on:
   push:
