@@ -1,10 +1,10 @@
-name: Android Build Release APK
+name: Android Build Release Workflow
 
 on:
   push:
     branches: [ "main" ]
-    tags:
-      - "v*.*.*"
+#     tags:
+#       - "v*"
   pull_request:
     branches: [ "main" ]
 
@@ -48,8 +48,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.event.release.tags }}
-          release_name: ${{ github.event.repository.name }} v${{ github.event.release.tags }}
+          tag_name: ${{ github.run_number }}
+          release_name: ${{ github.event.repository.name }} v1.${{ github.run_number }}
       - name: Upload Release APK
         id: upload_release_asset
         uses: actions/upload-release-asset@v1.0.1
