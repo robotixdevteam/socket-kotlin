@@ -1,8 +1,9 @@
 on:
   push:
-    branches: [ "main" ]
     tags:
       - '*'
+    branches: [ "main" ]
+
   pull_request:
     branches: [ "main" ]
 
@@ -46,8 +47,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref.tag }}
-          release_name: ${{ github.event.repository.name }} v${{ github.ref.tag }}
+          tag_name: ${{ github.ref_name }}
+          release_name: ${{ github.event.repository.name }} v${{ github.ref_name }}
       - name: Upload Release APK
         id: upload_release_asset
         uses: actions/upload-release-asset@v1.0.1
