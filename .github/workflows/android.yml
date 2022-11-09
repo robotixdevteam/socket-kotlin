@@ -1,3 +1,5 @@
+name: Android Build Release Workflow
+
 on:
   push:
     tags:
